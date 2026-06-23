@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Ultimate ePub Reader",
+  "version": "1.0.0",
+  "description": "View ePUB files right in your browser with dynamic layout sizing and TTS read-aloud capabilities.",
+  "action": {},
+  "background": {
+    "service_worker": "background.js"
+  }
+}

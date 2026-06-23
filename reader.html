@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ultimate Reader - Viewport</title>
+  <style>
+    body { margin: 0; padding: 0; font-family: system-ui, sans-serif; display: flex; height: 100vh; overflow: hidden; }
+    #sidebar { width: 300px; background: #f4f4f4; border-right: 1px solid #ddd; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+    #viewer-container { flex: 1; display: flex; justify-content: center; align-items: center; position: relative; background: #fafafa; }
+    #viewer { width: 100%; height: 100%; }
+    .control-group { display: flex; flex-direction: column; gap: 5px; }
+    select, input { padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 100%; }
+    .theme-buttons { display: flex; gap: 10px; }
+    .theme-btn { flex: 1; padding: 8px; border: none; cursor: pointer; border-radius: 4px; }
+    #theme-light { background: #ffffff; color: #000; border: 1px solid #ccc; }
+    #theme-dark { background: #1a1a1a; color: #fff; }
+    #theme-sepia { background: #f4ecd8; color: #5b4636; }
+    .nav-buttons { display: flex; justify-content: space-between; margin-top: auto; }
+    .nav-buttons button { padding: 10px 20px; cursor: pointer; }
+  </style>
+  <script src="jszip.min.js"></script>
+  <script src="epub.min.js"></script>
+</head>
+<body>
+
+  <div id="sidebar">
+    <h3>Reading Controls</h3>
+    
+    <div class="control-group">
+      <label>Upload EPUB:</label>
+      <input type="file" id="file-input" accept=".epub">
+    </div>
+
+    <div class="control-group">
+      <label>Font Size:</label>
+      <select id="font-size">
+        <option value="12px">Small</option>
+        <option value="16px" selected>Normal</option>
+        <option value="20px">Large</option>
+        <option value="24px">Extra Large</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label>Line Spacing:</label>
+      <select id="line-spacing">
+        <option value="1.2" selected>Tight</option>
+        <option value="1.5">Comfortable</option>
+        <option value="2.0">Loose</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label>Reading Mode:</label>
+      <div class="theme-buttons">
+        <button class="theme-btn" id="theme-light">Light</button>
+        <button class="theme-btn" id="theme-dark">Dark</button>
+        <button class="theme-btn" id="theme-sepia">Sepia</button>
+      </div>
+    </div>
+
+    <div class="control-group" style="margin-top: 15px; border-top: 1px solid #ddd; padding-top: 15px;">
+      <label><b>🎧 Read Aloud (TTS)</b></label>
+      <div style="display: flex; gap: 5px; margin-top: 5px;">
+        <button id="tts-play" style="flex: 1; padding: 6px;">▶ Play</button>
+        <button id="tts-pause" style="flex: 1; padding: 6px;">⏸ Pause</button>
+      </div>
+      <div style="margin-top: 8px;">
+        <label style="font-size: 12px;">Speed:</label>
+        <input type="range" id="tts-speed" min="0.5" max="2" step="0.1" value="1">
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <button id="prev-page">◀ Prev</button>
+      <button id="next-page">Next ▶</button>
+    </div>
+  </div>
+
+  <div id="viewer-container">
+    <div id="viewer"></div>
+  </div>
+
+  <script src="reader.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "ultimate-reader",
+  "version": "1.0.0",
+  "main": "reader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "epubjs": "^0.3.93",
+    "jszip": "^3.10.1"
+  }
+}
